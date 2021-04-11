@@ -1,0 +1,12 @@
+C:\Users\Home\source\repos\DATA\bin\Debug\DATA.exe.config
+C:\Users\Home\source\repos\DATA\bin\Debug\DATA.exe
+C:\Users\Home\source\repos\DATA\bin\Debug\DATA.pdb
+C:\Users\Home\source\repos\DATA\bin\Debug\EntityFramework.dll
+C:\Users\Home\source\repos\DATA\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Home\source\repos\DATA\bin\Debug\EntityFramework.xml
+C:\Users\Home\source\repos\DATA\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Home\source\repos\DATA\obj\Debug\DATA.csprojAssemblyReference.cache
+C:\Users\Home\source\repos\DATA\obj\Debug\DATA.csproj.CoreCompileInputs.cache
+C:\Users\Home\source\repos\DATA\obj\Debug\DATA.csproj.CopyComplete
+C:\Users\Home\source\repos\DATA\obj\Debug\DATA.exe
+C:\Users\Home\source\repos\DATA\obj\Debug\DATA.pdb

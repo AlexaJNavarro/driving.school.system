@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d5b81fc28cc24a7cb2acff3f8c637371" Name="Diagram1">
+        <EntityTypeShape EntityType="DBDrivingSchoolModel.district" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDrivingSchoolModel.package" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDrivingSchoolModel.type" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDrivingSchoolModel.user_package" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDrivingSchoolModel.users" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="DBDrivingSchoolModel.FK__users__id_distri__14270015" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDrivingSchoolModel.FK__package__id_type__19DFD96B" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDrivingSchoolModel.FK__user_pack__id_pa__1DB06A4F" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDrivingSchoolModel.FK__user_pack__id_us__1CBC4616" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

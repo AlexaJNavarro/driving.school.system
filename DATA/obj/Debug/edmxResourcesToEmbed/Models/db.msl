@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBDrivingSchoolModelStoreContainer" CdmEntityContainer="DBDrivingSchoolEntities">
+    <EntitySetMapping Name="district">
+      <EntityTypeMapping TypeName="DBDrivingSchoolModel.district">
+        <MappingFragment StoreEntitySet="district">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="deleted_at" ColumnName="deleted_at" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="package">
+      <EntityTypeMapping TypeName="DBDrivingSchoolModel.package">
+        <MappingFragment StoreEntitySet="package">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="deleted_at" ColumnName="deleted_at" />
+          <ScalarProperty Name="theory_test" ColumnName="theory_test" />
+          <ScalarProperty Name="practical_test" ColumnName="practical_test" />
+          <ScalarProperty Name="driving_hours" ColumnName="driving_hours" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="id_type" ColumnName="id_type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="type">
+      <EntityTypeMapping TypeName="DBDrivingSchoolModel.type">
+        <MappingFragment StoreEntitySet="type">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="deleted_at" ColumnName="deleted_at" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user_package">
+      <EntityTypeMapping TypeName="DBDrivingSchoolModel.user_package">
+        <MappingFragment StoreEntitySet="user_package">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="deleted_at" ColumnName="deleted_at" />
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="id_package" ColumnName="id_package" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="DBDrivingSchoolModel.users">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="deleted_at" ColumnName="deleted_at" />
+          <ScalarProperty Name="nombres" ColumnName="nombres" />
+          <ScalarProperty Name="apellido_paterno" ColumnName="apellido_paterno" />
+          <ScalarProperty Name="apellido_materno" ColumnName="apellido_materno" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="id_district" ColumnName="id_district" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

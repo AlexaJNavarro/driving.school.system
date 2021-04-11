@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBDrivingSchoolModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="district">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+    <Property Name="deleted_at" Type="datetime" />
+    <Property Name="name" Type="varchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <EntityType Name="package">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+    <Property Name="deleted_at" Type="datetime" />
+    <Property Name="theory_test" Type="bit" Nullable="false" />
+    <Property Name="practical_test" Type="bit" Nullable="false" />
+    <Property Name="driving_hours" Type="int" Nullable="false" />
+    <Property Name="description" Type="text" Nullable="false" />
+    <Property Name="price" Type="real" Nullable="false" />
+    <Property Name="id_type" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="type">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+    <Property Name="deleted_at" Type="datetime" />
+    <Property Name="name" Type="varchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <EntityType Name="user_package">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+    <Property Name="deleted_at" Type="datetime" />
+    <Property Name="id_user" Type="int" Nullable="false" />
+    <Property Name="id_package" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="updated_at" Type="datetime" />
+    <Property Name="deleted_at" Type="datetime" />
+    <Property Name="nombres" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="apellido_paterno" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="apellido_materno" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="id_district" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__package__id_type__19DFD96B">
+    <End Role="type" Type="Self.type" Multiplicity="1" />
+    <End Role="package" Type="Self.package" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="type">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="package">
+        <PropertyRef Name="id_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__user_pack__id_pa__1DB06A4F">
+    <End Role="package" Type="Self.package" Multiplicity="1" />
+    <End Role="user_package" Type="Self.user_package" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="package">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="user_package">
+        <PropertyRef Name="id_package" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__user_pack__id_us__1CBC4616">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="user_package" Type="Self.user_package" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="user_package">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__users__id_distri__14270015">
+    <End Role="district" Type="Self.district" Multiplicity="1" />
+    <End Role="users" Type="Self.users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="district">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="id_district" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBDrivingSchoolModelStoreContainer">
+    <EntitySet Name="district" EntityType="Self.district" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="package" EntityType="Self.package" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="type" EntityType="Self.type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="user_package" EntityType="Self.user_package" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__package__id_type__19DFD96B" Association="Self.FK__package__id_type__19DFD96B">
+      <End Role="type" EntitySet="type" />
+      <End Role="package" EntitySet="package" />
+    </AssociationSet>
+    <AssociationSet Name="FK__user_pack__id_pa__1DB06A4F" Association="Self.FK__user_pack__id_pa__1DB06A4F">
+      <End Role="package" EntitySet="package" />
+      <End Role="user_package" EntitySet="user_package" />
+    </AssociationSet>
+    <AssociationSet Name="FK__user_pack__id_us__1CBC4616" Association="Self.FK__user_pack__id_us__1CBC4616">
+      <End Role="users" EntitySet="users" />
+      <End Role="user_package" EntitySet="user_package" />
+    </AssociationSet>
+    <AssociationSet Name="FK__users__id_distri__14270015" Association="Self.FK__users__id_distri__14270015">
+      <End Role="district" EntitySet="district" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

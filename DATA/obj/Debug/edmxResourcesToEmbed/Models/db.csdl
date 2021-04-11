@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBDrivingSchoolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="district">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
+    <Property Name="deleted_at" Type="DateTime" Precision="3" />
+    <Property Name="name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="users" Relationship="Self.FK__users__id_distri__14270015" FromRole="district" ToRole="users" />
+  </EntityType>
+  <EntityType Name="package">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
+    <Property Name="deleted_at" Type="DateTime" Precision="3" />
+    <Property Name="theory_test" Type="Boolean" Nullable="false" />
+    <Property Name="practical_test" Type="Boolean" Nullable="false" />
+    <Property Name="driving_hours" Type="Int32" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="price" Type="Single" Nullable="false" />
+    <Property Name="id_type" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="type" Relationship="Self.FK__package__id_type__19DFD96B" FromRole="package" ToRole="type" />
+    <NavigationProperty Name="user_package" Relationship="Self.FK__user_pack__id_pa__1DB06A4F" FromRole="package" ToRole="user_package" />
+  </EntityType>
+  <EntityType Name="type">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
+    <Property Name="deleted_at" Type="DateTime" Precision="3" />
+    <Property Name="name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="package" Relationship="Self.FK__package__id_type__19DFD96B" FromRole="type" ToRole="package" />
+  </EntityType>
+  <EntityType Name="user_package">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
+    <Property Name="deleted_at" Type="DateTime" Precision="3" />
+    <Property Name="id_user" Type="Int32" Nullable="false" />
+    <Property Name="id_package" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="package" Relationship="Self.FK__user_pack__id_pa__1DB06A4F" FromRole="user_package" ToRole="package" />
+    <NavigationProperty Name="users" Relationship="Self.FK__user_pack__id_us__1CBC4616" FromRole="user_package" ToRole="users" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <Property Name="updated_at" Type="DateTime" Precision="3" />
+    <Property Name="deleted_at" Type="DateTime" Precision="3" />
+    <Property Name="nombres" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="apellido_paterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="apellido_materno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id_district" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="district" Relationship="Self.FK__users__id_distri__14270015" FromRole="users" ToRole="district" />
+    <NavigationProperty Name="user_package" Relationship="Self.FK__user_pack__id_us__1CBC4616" FromRole="users" ToRole="user_package" />
+  </EntityType>
+  <Association Name="FK__users__id_distri__14270015">
+    <End Role="district" Type="Self.district" Multiplicity="1" />
+    <End Role="users" Type="Self.users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="district">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="id_district" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__package__id_type__19DFD96B">
+    <End Role="type" Type="Self.type" Multiplicity="1" />
+    <End Role="package" Type="Self.package" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="type">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="package">
+        <PropertyRef Name="id_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__user_pack__id_pa__1DB06A4F">
+    <End Role="package" Type="Self.package" Multiplicity="1" />
+    <End Role="user_package" Type="Self.user_package" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="package">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="user_package">
+        <PropertyRef Name="id_package" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__user_pack__id_us__1CBC4616">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="user_package" Type="Self.user_package" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="user_package">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBDrivingSchoolEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="district" EntityType="Self.district" />
+    <EntitySet Name="package" EntityType="Self.package" />
+    <EntitySet Name="type" EntityType="Self.type" />
+    <EntitySet Name="user_package" EntityType="Self.user_package" />
+    <EntitySet Name="users" EntityType="Self.users" />
+    <AssociationSet Name="FK__users__id_distri__14270015" Association="Self.FK__users__id_distri__14270015">
+      <End Role="district" EntitySet="district" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__package__id_type__19DFD96B" Association="Self.FK__package__id_type__19DFD96B">
+      <End Role="type" EntitySet="type" />
+      <End Role="package" EntitySet="package" />
+    </AssociationSet>
+    <AssociationSet Name="FK__user_pack__id_pa__1DB06A4F" Association="Self.FK__user_pack__id_pa__1DB06A4F">
+      <End Role="package" EntitySet="package" />
+      <End Role="user_package" EntitySet="user_package" />
+    </AssociationSet>
+    <AssociationSet Name="FK__user_pack__id_us__1CBC4616" Association="Self.FK__user_pack__id_us__1CBC4616">
+      <End Role="users" EntitySet="users" />
+      <End Role="user_package" EntitySet="user_package" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
